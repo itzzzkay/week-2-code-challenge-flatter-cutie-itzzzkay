@@ -1,17 +1,19 @@
-function xters(){
-    fetch ("https://anything-you-want-blond.vercel.app/characters")
+document.addEventListener("DOMContentLoaded", getCharacters)
+
+function getCharacters() {
+    fetch("https://anything-you-want-blond.vercel.app/characters")
     .then(response => response.json())
-    .then(data =>
+    .then(data => {
 
-    )
-    .catch(error => console.error(error));
+        const characterBar = document.getElementById("character_bar")
+        characterBar.innerHTML=""
 
-    if(!response.ok){
-        throw new Error("You clearly don't how to accessthe server data") 
-    }
+        data.forEach(character => {
+            const span = document.createElement("span")
+            span.textContent = character.name
+            span.addEventListener("click",()=>showCharacterDetails(character));
+            characterBar.appendChild(span);
+        });
+    })
+    .catch(error => console.error(error))
 }
-
-function displayCharacters(){
-    let character_bar = document.getElementById('character-bar')
-}
-const myUrl = "https://anything-you-want-blond.vercel.app/characters"
