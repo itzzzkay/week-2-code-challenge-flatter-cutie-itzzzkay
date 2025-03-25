@@ -17,7 +17,7 @@ function getCharacters() {
     .catch((error) => console.error(error));
 }
 
-function characterDetails() {
+function characterDetails(character) {
   const name = document.getElementById("name");
   const image = document.getElementById("image");
   const votes = document.getElementById("vote-count");
